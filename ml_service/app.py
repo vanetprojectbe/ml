@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
 
-from model import AccidentModel
+from ml_service.model import AccidentModel
 
 app = FastAPI()
 
