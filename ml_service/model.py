@@ -1,7 +1,7 @@
 import joblib
 import numpy as np
 
-from feature_schema import FEATURE_ORDER, SEVERITY_MAP
+from ml_service.feature_schema import FEATURE_ORDER, SEVERITY_MAP
 
 class AccidentModel:
 
