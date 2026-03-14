@@ -1,14 +1,12 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
-
 from ml_service.model import AccidentModel
 
 app = FastAPI()
 
 model = AccidentModel()
 
-class FeaturePayload(BaseModel):
-
+class AccidentInput(BaseModel):
     acc_delta: float
     gyro_delta: float
     vibration_intensity: float
@@ -20,13 +18,13 @@ class FeaturePayload(BaseModel):
     longitude: float
     initial_speed: float
 
+
 @app.get("/")
-def root():
-    return {"service":"VANET ML"}
+def health():
+    return {"status": "ML service running"}
+
 
 @app.post("/predict")
-def predict(payload:FeaturePayload):
-
-    result = model.predict(payload.dict())
-
+def predict(data: AccidentInput):
+    result = model.predict(data.dict())
     return result
